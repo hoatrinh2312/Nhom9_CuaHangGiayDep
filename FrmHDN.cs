@@ -103,7 +103,7 @@ namespace CuaHangGiayDep
         {
             string sql;
             double sl, SLcapnhat, tong, Tongmoi;
-            double dg, dgt;
+            double dg, dgt,dgb;
             sql = "SELECT SoHDN FROM HoaDonNhap WHERE SoHDN=N'" + txtSoHDN.Text + "'";
             if (!Functions.CheckKey(sql))
             {
@@ -133,8 +133,9 @@ namespace CuaHangGiayDep
                     + cboMaNV.SelectedValue + "',N'" + cboMaNCC.SelectedValue + "',N'" + txtTongTien.Text + "'" + ")";
                 Functions.RunSQL(sql);
                 //Giá bán trong sản phẩm tự động cập nhật khi nhập hàng
-                dgt = dg * 1.1;
-                sql = "UPDATE SanPham SET DonGiaNhap =" + dgt + " WHERE MaGD= N'" + cboMaGD.SelectedValue + "'";
+                dgb = Convert.ToDouble(Functions.GetFieldValues("SELECT DonGiaBan FROM SanPham WHERE MaGD = N'" + cboMaGD.SelectedValue + "'"));
+                dgb = dg * 1.1;
+                sql = "UPDATE SanPham SET DonGiaBan =" + dgt + " WHERE MaGD= N'" + cboMaGD.SelectedValue + "'";
                 Functions.RunSQL(sql);
                 if (cboMaGD.Text.Trim().Length == 0)
                 {
