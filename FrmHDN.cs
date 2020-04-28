@@ -53,7 +53,7 @@ namespace CuaHangGiayDep
         private void LoadDataGridView()
         {
             string sql;
-            sql = "Select a.MaGD, b.TenGD, a.SoLuong, b.DonGiaNhap,a.GiamGia, a.ThanhTien from ChiTietHDN as a, SanPham as b where a.SoHDN = N'"
+            sql = "Select a.MaGD, b.TenGD, a.SoLuong, a.DonGia,a.GiamGia, a.ThanhTien from ChiTietHDN as a, SanPham as b where a.SoHDN = N'"
                 + txtSoHDN.Text + "'AND a.MaGD= b.MaGD";
             tblCTHDN = Functions.GetDataToTable(sql);
             dgvHDNhapHang.DataSource = tblCTHDN;
@@ -514,7 +514,7 @@ namespace CuaHangGiayDep
         {
             cboMaGD.Text = dgvHDNhapHang.CurrentRow.Cells["MaGD"].Value.ToString();
             txtTenGD.Text = dgvHDNhapHang.CurrentRow.Cells["TenGD"].Value.ToString();
-            txtDonGia.Text = dgvHDNhapHang.CurrentRow.Cells["DonGiaNhap"].Value.ToString();
+            txtDonGia.Text = dgvHDNhapHang.CurrentRow.Cells["DonGia"].Value.ToString();
             txtGiamGia.Text = dgvHDNhapHang.CurrentRow.Cells["GiamGia"].Value.ToString();
             txtThanhTien.Text = dgvHDNhapHang.CurrentRow.Cells["ThanhTien"].Value.ToString();
             txtSoLuong.Text = dgvHDNhapHang.CurrentRow.Cells["SoLuong"].Value.ToString();
